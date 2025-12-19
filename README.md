@@ -1,60 +1,92 @@
-# ishma-cybsec intermediate tools
+Intermediate Python Tools for Cybersecurity & Digital Forensics
 
-**Packet Logger (sim)** · **Password Length Checker**
-*Intermediate, lightweight Python tools for digital forensics & app security — built for TalTech projects, SOC/IR labs, and portfolio demos.*
+This repository contains two lightweight Python tools developed for practicing digital forensics, basic SOC detection logic, and application security concepts. The projects are intentionally designed to be safe, auditable, and runnable in standard Python environments without administrative privileges or external dependencies.
 
-Hey — this repo bundles two compact, no-friction projects you can run in any Python 3 IDE (IDLE / Thonny / VS Code). They’re designed to teach forensic thinking and app security basics without heavy installs or admin privileges. Perfect for TalTech coursework or internship demos.
+The focus is on methodology and analysis, not offensive exploitation.
 
-🎓 Why TalTech?
-
-I built this suite as part of my cybersecurity and digital forensics practice — aligning with the TalTech B.Sc. in Cybersecurity curriculum focus areas:
-
-Practical network forensics
-
-Log analysis and automation
-
-Password policy auditing
-
-Evidence-based reporting
-
-The goal: bridge theory and field application using small, auditable Python projects that demonstrate clarity, discipline, and professional ethics.
 
 ---
 
-## Projects included
+Projects Included
 
-### 1) Packet Logger — Simulator / Analyzer (`packet_logger_safe.py`)
+1. Packet Logger – Simulator & Analyzer
 
-A plain-Python packet *log parser* and lightweight analyzer that:
+packet_logger_safe.py
 
-* Parses simple packet-like text files (`packets.txt`) so you can simulate network traffic without capturing live packets or needing root.
-* Produces a CSV summary (`packet_summary.csv`) and raw log (`packet_log.txt`).
-* Summarizes: total packets, unique IPs, top source IPs, top destination ports.
-* Flags simple suspicious behaviours:
+A plain-Python packet log parser and analyzer that simulates network traffic analysis using text-based packet records.
 
-  * **Port scan** — same source probing many distinct destination ports.
-  * **SSH brute-force** — repeated failed attempts to port 22.
-* IDE-friendly: interactive prompts, auto-creates a sample `packets.txt` if missing, graceful error handling.
+Key functionality:
 
-**Why useful:** demonstrates network-level forensics and SOC detection logic without root/Scapy. Good for IR labs, detection engineering, and showing pipeline automation.
+Parses packet-like log files (packets.txt) to simulate traffic without live capture
+
+Generates structured outputs:
+
+packet_log.txt (raw processed logs)
+
+packet_summary.csv (aggregated analysis)
+
+
+Computes:
+
+Total packet count
+
+Unique IP addresses
+
+Most frequent source IPs
+
+Most targeted destination ports
+
+
+Detects simple suspicious patterns:
+
+Port scanning behaviour (single source → multiple ports)
+
+Repeated SSH attempts on port 22
+
+
+Includes input validation, error handling, and sample data auto-generation
+
+
+Learning focus:
+Network forensics, log analysis, detection logic, reporting discipline
+
 
 ---
 
-### 2) Password Length Checker (`password_length_checker.py`)
+2. Password Length Checker
 
-A tiny CLI tool that:
+password_length_checker.py
 
-* Reads single password input or a batch file (one password per line).
-* Reports simple strength hints focused on **length** and basic character variety.
-* Outputs formatted case IDs with leading zeros (e.g., `#001`) for clear reporting.
-* Designed as a minimal, safe audit tool — ideal for teaching password policy basics and for integration into bigger audits.
+A minimal command-line utility for basic password policy auditing.
 
-**Why useful:** password hygiene is a core security control. This lightweight tool shows automated checks, logging style, and how to present results to reviewers or as part of an intake pipeline.
+Key functionality:
+
+Accepts single password input or batch input from a file
+
+Evaluates passwords based on:
+
+Length
+
+Basic character diversity
+
+
+Outputs clearly formatted audit results with case IDs
+
+Designed for safe, non-invasive analysis
+
+
+Learning focus:
+Password hygiene, automation, structured reporting
+
 
 ---
 
-## Tech stack & requirements
+Technical Details
 
-* Language: **Python 3.8+** (works on any Python 3 interpreter)
-* No external libraries required for the default modes. (Optional: Scapy for live capture — not recommended for TalTech classroom demos unless you have admin privileges.)
-* Files: the tools rely on small text files (e.g., `packets.txt`, optional `pwlist.txt`) — no DBs.
+Language: Python 3.8+
+
+Dependencies: None (standard library only)
+
+Environment: Works in any Python IDE (IDLE, Thonny, VS Code)
+
+Data handling: Text-based input files (no databases)
